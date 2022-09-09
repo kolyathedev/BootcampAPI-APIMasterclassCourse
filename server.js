@@ -1,17 +1,21 @@
 const express = require('express')
 const dotenv = require('dotenv')
+const camps = require('./routes/camps')
 
-// load env vars
-dotenv.config({ path: 'config/config.env' })
+// Load env vars
+dotenv.config({ path: './config/config.env' })
 
-// initialise our express app
+// Initialise our express app
 const app = express()
 
-// set our ports for the server to listen on
+// Mount the routers on to the URL
+app.use('/api/v1/camps', camps)
+
+// Set our ports for the server to listen on
 const PORT = process.env.PORT || 5000
 
-// set our express server to listen to the port
+// Set our express server to listen to the port
 app.listen(
 	PORT,
-	console.log(`server running in ${process.env.NODE_ENV} on port ${PORT}`)
+	console.log(`Server running in ${process.env.NODE_ENV} on port ${PORT}`)
 )
