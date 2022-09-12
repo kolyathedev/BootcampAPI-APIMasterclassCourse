@@ -6,7 +6,13 @@ exports.getCamps = (req, res, next) => {
 	// res.sendStatus(400) If you just want to send back a status.
 	// res.status(400).json({ success: false }) Send back a status and some json to then be handled by the client.
 	// res.status(200).json({ success: true, data: { name: "ye old'e mcSmugly " } }) A typical successful response from the server.
-	res.status(200).json({ success: true, msg: 'Show all camps' })
+	res
+		.status(200)
+		.json({
+			success: true,
+			msg: 'Show all camps',
+			harryAWizard: req.urAWizardHarry,
+		})
 }
 
 // GET a single camp
