@@ -2,6 +2,7 @@ const express = require('express')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
 const colors = require('colors')
+const errorHandler = require('./middleware/error')
 const connectDB = require('./config/db')
 
 // Load env vars
@@ -25,6 +26,9 @@ const app = express()
 // }
 // app.use(logger)
 
+// Enable body parsing of req.body
+app.use(express.json())
+
 // Dev Logging MiddleWare
 if (process.env.NODE_ENV === 'development') {
 	app.use(morgan('dev'))
@@ -32,7 +36,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // Mount the routers on to the URL
 app.use('/api/v1/camps', camps)
-
+app.use(errorHandler)
 // Set our ports for the server to listen on
 const PORT = process.env.PORT || 5000
 

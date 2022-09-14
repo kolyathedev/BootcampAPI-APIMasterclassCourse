@@ -41,11 +41,10 @@ const CampSchema = new mongoose.Schema({
 		type: {
 			type: String,
 			enum: ['Point'],
-			required: true,
 		},
 		coordinates: {
 			type: [Number],
-			required: true,
+
 			index: '2dsphere',
 		},
 		formattedAddress: String,
@@ -79,6 +78,11 @@ const CampSchema = new mongoose.Schema({
 	blackbeltInstructor: {
 		type: Boolean,
 		default: true,
+	},
+	social: {
+		instagram: String,
+		facebook: String,
+		twitter: String,
 	},
 	createdAt: {
 		type: Date,
