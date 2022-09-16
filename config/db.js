@@ -5,7 +5,7 @@ const connectDB = async () => {
 		useNewUrlParser: true,
 	})
 
-	console.log(`MondoDB connected: ${connect.connection.host}`.trap.bold)
+	console.log(`MondoDB connected: ${connect.connection.host}`.cyan.bold)
 }
 
 module.exports = connectDB
